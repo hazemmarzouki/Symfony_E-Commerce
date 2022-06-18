@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ product.name }}
+{% endblock %}
+
+{% block content %}
+	<div class="row">
+		<div class="col-md-4">
+			<img src="/img/{{product.illustration}}" alt="{{product.name}}" class="img-fluid">
+		</div>
+		<div class="col-md-8 my-auto">
+
+			<h3>{{ product.name }}</h3>
+			<p>{{product.subtitle}}</p>
+			<span class="product-single-price">{{ (product.price / 100) |number_format(3,',','.')}}
+				Tnd
+			</span>
+			<hr>
+			<p>
+				{{ product.description }}  Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis quidem dignissimos ipsam numquam eum perspiciatis obcaecati est! Quaerat, iste, veritatis qui, quidem maiores odio vero voluptatem id beatae aperiam aliquid.
+                Sit officiis hic inventore repellat, placeat rerum magnam quae dolor nesciunt! Nemo sit nihil dolorem illo id dicta debitis illum enim praesentium libero, et vitae. Dolore vitae possimus molestiae odit.
+                Tempora, delectus aperiam. Tempore sapiente placeat numquam molestias fuga molestiae animi dolor at soluta? Voluptatibus, ullam et. Culpa quo, odio debitis rerum reiciendis repellat velit tenetur. Soluta illo enim quae?
+			</p>
+			<a href="" class="btn btn-primary">Ajouter Au Panier</a>
+		</div>
+
+	</div>
+
+
+{% endblock %}
