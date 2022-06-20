@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Panier - La Boutique
+{% endblock %}
+
+{% block content %}
+	<h1>Mon Panier</h1>
+	Retrouvez Vos Produits que vous avez ajouter à votre Panier
+	<section class="pb-5 mt-3 mb-5">
+		<div class="container">
+			<div class="row w-100">
+				<div class="col-lg-12 col-md-12 col-12">
+					<table id="shoppingCart" class="table table-condensed table-responsive">
+						<thead>
+							<tr>
+								<th style="width:50%">Produits</th>
+								<th style="width:12%">Prix</th>
+								<th style="width:10%">Quantité</th>
+                            <th style="width:15%">SubTotale</th>
+								<th style="width:16%"></th>
+							</tr>
+						</thead>
+						<tbody>
+                            {% set total = null %}
+							{% for product in cart %}
+								<tr>
+									<td data-th="Product">
+										<div class="row">
+											<div class="col-md-3 text-left">
+												<img src="/img/{{product.product.illustration}}" alt="" class="img-fluid d-none d-md-block rounded mb-2 ">
+											</div>
+											<div class="col-md-9 text-left mt-sm-2">
+												<h4 class="font-weight-normal">{{ product.product.name }}</h4>
+												<p class="font-weight-light">{{ product.product.category }}</p>
+											</div>
+										</div>
+									</td>
+
+									<td data-th="Price">{{ (product.product.price / 100) |number_format(3,',','.')}}
+										Tnd</td>
+									<td data-th="Quantity">{{ product.quantity }}</td>
+                                    <td data-th="sub-total">{{ (product.product.price * product.quantity/ 100) |number_format(3,',','.')}}
+										Tnd</td>
+									<td class="actions" data-th="">
+										<div class="text-right">
+
+											<button class="btn btn-white border-secondary bg-white btn-md mb-2">
+												<i class="fas fa-trash"></i>
+											</button>
+										</div>
+									</td>
+								</tr>
+                                {% set total = total + (product.product.price * product.quantity) %}
+							{% endfor %}
+						</tbody>
+					</table>
+                    <p class="mb-1 text-center">Vous Avez 
+                <i class="text-success font-weight-bold">{{ cart|length}}</i> 
+                 Produits Dans Votre Panier</p>
+					<div class="float-right text-right">
+						<h6>totale:</h6>
+						<h3>
+                            {{ (total/ 100) |number_format(3,',','.')}} Tnd
+                        </h3>
+					</div>
+				</div>
+			</div>
+			<div class="row mt-4 d-flex align-items-center">
+				<div class="col-sm-6 order-md-2 text-right">
+					<a href="" class="btn btn-success mb-4 btn-sm pl-5 pr-5">Valider Mon Panier</a>
+				</div>
+				<div class="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-left">
+					<a class="text-secondary" href="">
+						<i class="fas fa-arrow-left mr-2 "></i>
+						Ajouter D'autres Produits</a>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
+
