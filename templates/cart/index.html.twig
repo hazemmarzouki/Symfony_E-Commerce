@@ -6,6 +6,7 @@
 {% block content %}
 	<h1>Mon Panier</h1>
 	Retrouvez Vos Produits que vous avez ajouter à votre Panier
+
 	<section class="pb-5 mt-3 mb-5">
 		<div class="container">
 			<div class="row w-100">
@@ -16,12 +17,12 @@
 								<th style="width:50%">Produits</th>
 								<th style="width:12%">Prix</th>
 								<th style="width:10%">Quantité</th>
-                            <th style="width:15%">SubTotale</th>
+								<th style="width:15%">SubTotale</th>
 								<th style="width:16%"></th>
 							</tr>
 						</thead>
 						<tbody>
-                            {% set total = null %}
+							{% set total = null %}
 							{% for product in cart %}
 								<tr>
 									<td data-th="Product">
@@ -38,30 +39,41 @@
 
 									<td data-th="Price">{{ (product.product.price / 100) |number_format(3,',','.')}}
 										Tnd</td>
-									<td data-th="Quantity">{{ product.quantity }}</td>
-                                    <td data-th="sub-total">{{ (product.product.price * product.quantity/ 100) |number_format(3,',','.')}}
+									<td data-th="Quantity">
+										<a href="{{ path('decrease_my_cart',{'id' : product.product.id}) }}" alt="supprimer_un_produit">
+											<i class="fa-solid fa-minus"></i>
+										</a>
+										{{ product.quantity }}
+										<a href="{{ path('add_to_cart',{'id' : product.product.id}) }}" alt="ajouter_un_produit">
+											<i class="fa-solid fa-plus"></i>
+										</a>
+									</td>
+									<td data-th="sub-total">{{ (product.product.price * product.quantity/ 100) |number_format(3,',','.')}}
 										Tnd</td>
 									<td class="actions" data-th="">
 										<div class="text-right">
-
-											<button class="btn btn-white border-secondary bg-white btn-md mb-2">
-												<i class="fas fa-trash"></i>
-											</button>
-										</div>
-									</td>
+											<a href="{{ path('delete_my_cart' , { 'id' : product.product.id }) }}">
+												<button class="btn btn-white btn-outline-danger  bg-white btn-md mb-2">
+													<i class="fas fa-trash"></i>
+												</button>
+												<a></div>
+											</td>
+										</tr>
+										{% set total = total + (product.product.price * product.quantity) %}
+									{% endfor %}
 								</tr>
-                                {% set total = total + (product.product.price * product.quantity) %}
-							{% endfor %}
+							</tbody>
 						</tbody>
 					</table>
-                    <p class="mb-1 text-center">Vous Avez 
-                <i class="text-success font-weight-bold">{{ cart|length}}</i> 
-                 Produits Dans Votre Panier</p>
+					<p class="mb-1 text-center">Vous Avez
+						<i class="text-success font-weight-bold">{{ cart|length}}</i>
+						Produits Dans Votre Panier</p>
 					<div class="float-right text-right">
 						<h6>totale:</h6>
 						<h3>
-                            {{ (total/ 100) |number_format(3,',','.')}} Tnd
-                        </h3>
+							{{ (total/ 100) |number_format(3,',','.')}}
+							Tnd
+						</h3>
 					</div>
 				</div>
 			</div>
@@ -78,4 +90,3 @@
 		</div>
 	</section>
 {% endblock %}
-

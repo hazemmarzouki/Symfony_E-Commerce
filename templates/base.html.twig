@@ -35,57 +35,71 @@
 	</head>
 	<body>
 		<header>
-			<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-				<a class="navbar-brand navbar-custom" href="{{ path('home') }}">
-					<i class="fa-solid fa-shop"></i>
-                <span></span>
-				</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarCollapse">
-					<ul class="navbar-nav mr-auto">
-						<li class="nav-item active">
-							<a class="nav-link" href="{{ path('products') }}">
-								<i class="fa-solid fa-bag-shopping"></i>
-								Nos Produits
-							</a>
-						</li>
-						<li class="nav-item active">
-							<a class="nav-link" href="#">
-								<i class="fa-solid fa-rectangle-list"></i>
-								À Propos
-							</a>
-						</li>
-						<li class="nav-item active">
-							<a class="nav-link" href="#">
-								<i class="fa-solid fa-square-phone"></i>
-								Contact
-							</a>
-						</li>
+			<nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-light fixed-top">
+				<div class="container">
+					<a class="navbar-brand d-flex align-items-center" href="#">
+						<i class="fa-solid fa-campground fa-lg"></i>
+						<span class="ml-3 font-weight-bold">Camping.Tn</apan>
+					</a>
+					<button class="navbar-toggler navbar-toggler-right border-0" type="button" data-toggle="collapse" data-target="#navbar4">
+						<span class="navbar-toggler-icon"></span>
+					</button>
 
-					</ul>
-					<div class="navbar-item-custom">
-						<i class="fa-solid fa-house-user"></i>
-						{% if app.user %}
-							<a href="{{ path('account') }} ">
-								Mon Compte
-								<small>({{ app.user.Firstname }})</small>
-							</a>
-							|
-							<a href="{{ path('app_logout') }} ">Déxonnexion
-								<i class="fa-solid fa-right-from-bracket"></i>
-							</a>
-						{% else %}
-							<a href="{{ path('app_login') }} ">Connexion</a>
-							|
-							<a href="{{ path('register') }} ">Inscription</a>
-						{% endif %}
+					<div class="collapse navbar-collapse" id="navbar4">
+						<ul class="navbar-nav mr-auto pl-lg-4">
+							<li class="nav-item px-lg-2">
+								<a class="nav-link" href="{{ path('home') }}">
+									<i class="fa-solid fa-house"></i>
+									Acceuil</a>
+							</li>
+							<li class="nav-item px-lg-2 active">
+								<a class="nav-link" href="{{ path('products') }}">
+									<i class="fa-solid fa-bag-shopping"></i>
+									Nos Produits
+								</a>
+							</li>
+							<li class="nav-item px-lg-2">
+								<a class="nav-link" href="#">
+									<i class="fa-solid fa-rectangle-list"></i>
+									A Propos</a>
+							</li>
+							<li class="nav-item px-lg-2">
+								<a class="nav-link" href="#">
+									<i class="fa-solid fa-square-phone"></i>
+									Contact</a>
+							</li>
+						</ul>
+						<div class="navbar-item-custom">
+							<i class="fa-solid fa-house-user"></i>
+							{% if app.user %}
+								<a href="{{ path('account') }} ">
+									Mon Compte
+									<small>({{ app.user.Firstname }})</small>
+								</a>
+								&nbsp;&nbsp;&nbsp;
+								<a href="{{ path('app_logout') }} ">Déxonnexion
+									<i class="fa-solid fa-right-from-bracket"></i>
+								</a>
+							{% else %}
+								<a href="{{ path('app_login') }} ">Connexion</a>
+								&nbsp;&nbsp;&nbsp;
+								<a href="{{ path('register') }} ">
+									<i class="fa-solid fa-user-plus"></i>
+									Inscription</a>
+							{% endif %}
+						</div>
 					</div>
 				</div>
+				<ul class="navbar-nav mr-auto pl-lg-1">
+					<li class="nav-item px-lg-1">
+						<a class="nav-link" href="{{ path('cart') }}">
+					<i class="fa-solid fa-cart-shopping fa-lg"></i>
+						</a>
+					</li>
+				</ul>
 			</nav>
 		</header>
-
+		<!--carousel-->
 		<main role="main">
 			{% if block('carousel') is defined %}
 
@@ -97,9 +111,8 @@
 					</ol>
 					<div class="carousel-inner">
 						<div class="carousel-item active">
-							<svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveaspectratio="xMidYMid slice" focusable="false" role="img">
-								<rect width="100%" height="100%" fill="#777"/>
-							</svg>
+						<img src={{ asset('/img/img1.jpg') }} class="img-fluid" style>
+
 							<div class="container">
 								<div class="carousel-caption text-left">
 									<h1>
@@ -193,6 +206,7 @@
 						</small>
 					</p>
 				</footer>
+
 			</main>
 			<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 			<script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>
