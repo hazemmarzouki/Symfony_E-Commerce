@@ -77,8 +77,8 @@
 									<small>({{ app.user.Firstname }})</small>
 								</a>
 								&nbsp;&nbsp;&nbsp;
-								<a href="{{ path('app_logout') }} ">Déxonnexion
-									<i class="fa-solid fa-right-from-bracket"></i>
+								<a href="{{ path('app_logout') }} "><i class="fa-solid fa-right-from-bracket"></i> Deconnexion
+									
 								</a>
 							{% else %}
 								<a href="{{ path('app_login') }} ">Connexion</a>
@@ -152,23 +152,7 @@
 			<div class="container-marketing {% if block('carousel') is not defined %} mt-5 ml-5 mr-5 {% endif %}"> {% block content %}{% endblock %}
 				</div>
 
-				<!-- FOOTER -->
-				<footer class="footer-custom">
-
-					<p>
-						&copy; 2022 La Boutique - Tunisie<br/>
-						<small>
-							La Boutique 100% made in Tunisia<br/>
-							<a href="#">
-								Privacy
-							</a>
-							&middot;
-							<a href="#">
-								Terms
-							</a>
-						</small>
-					</p>
-				</footer>
+			
 
 			</main>
 			<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
