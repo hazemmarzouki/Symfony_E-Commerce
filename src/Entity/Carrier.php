@@ -22,6 +22,11 @@ class Carrier
     #[ORM\Column(type: 'float')]
     private $prix;
 
+    public function __toString()
+    {
+        return $this->getName().' - '.number_format($this->getPrix(),3).' Tnd';
+    }
+
     public function getId(): ?int
     {
         return $this->id;

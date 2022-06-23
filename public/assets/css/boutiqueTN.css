@@ -52,3 +52,22 @@ body {
     margin-left: 70px;
     margin-right: 70px;
 }
+
+.block-small{
+    max-width: 600px;
+    margin: 0 auto; 
+}
+
+.form-check{
+    background-color: #a9dcad87;
+    padding:15px 50px;
+    margin-top: 5px;
+}
+.col-form-label{
+    font-weight: bold;
+}
+.order-summary{
+       background-color: rgba(231, 231, 231, 0.46);
+       padding:20px;
+       margin-top: 22px;
+}
