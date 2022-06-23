@@ -68,7 +68,7 @@
 			<strong>Total   :
 			</strong>
 			{{ ((total/ 100) + carrier.prix) |number_format(3,',','.')}} Tnd
-			<a href="" class="btn btn-success btn-block mt-3">Payer {{ ((total/ 100) + carrier.prix) |number_format(3,',','.')}} Tnd
+			<a href="{{ path('app_order_validate') }}" class="btn btn-success btn-block mt-3">Payer {{ ((total/ 100) + carrier.prix) |number_format(3,',','.')}} Tnd
         </a>
 		</div>
 	</div>
